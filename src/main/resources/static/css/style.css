@@ -1956,3 +1956,472 @@ button {
         padding: 30px 22px;
     }
 }
+
+/* =========================================================
+HOME / LANDING PAGE
+========================================================= */
+
+    .home-hero {
+        min-height: 620px;
+        align-items: center;
+    }
+
+    .home-actions {
+        margin-top: 36px;
+
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        flex-wrap: wrap;
+    }
+
+    .home-card {
+        min-height: 360px;
+    }
+
+    .home-card-number {
+        margin-top: 40px;
+
+        font-size: clamp(72px, 8vw, 120px);
+        line-height: 0.78;
+
+        font-weight: 900;
+        letter-spacing: -8px;
+
+        text-transform: uppercase;
+    }
+
+    .home-features {
+        margin-top: 30px;
+
+        border-top: 2px solid var(--ink);
+        border-bottom: 2px solid var(--ink);
+    }
+
+    .home-feature {
+        min-height: 170px;
+
+        padding: 28px 0;
+
+        display: grid;
+        grid-template-columns: 120px 1fr;
+        gap: 40px;
+
+        align-items: center;
+
+        border-bottom: 1px solid var(--line);
+    }
+
+    .home-feature:last-child {
+        border-bottom: none;
+    }
+
+    .home-feature-number {
+        color: transparent;
+
+        -webkit-text-stroke: 1.5px var(--ink);
+
+        font-size: 64px;
+        line-height: 1;
+
+        font-weight: 900;
+        letter-spacing: -5px;
+    }
+
+    .home-feature h2 {
+        font-size: 30px;
+        font-weight: 900;
+
+        text-transform: uppercase;
+        letter-spacing: -1px;
+    }
+
+    .home-feature p {
+        max-width: 620px;
+
+        margin-top: 8px;
+
+        color: var(--muted);
+
+        font-size: 14px;
+        line-height: 1.7;
+    }
+
+    @media (max-width: 600px) {
+
+        .home-hero {
+            min-height: auto;
+        }
+
+        .home-actions {
+            align-items: stretch;
+            flex-direction: column;
+        }
+
+        .home-actions .primary-action,
+        .home-actions .secondary-action {
+            width: 100%;
+        }
+
+        .home-feature {
+            grid-template-columns: 70px 1fr;
+            gap: 18px;
+        }
+
+        .home-feature-number {
+            font-size: 46px;
+        }
+    }
+
+/* =========================================================
+AUTHENTICATED PANEL
+========================================================= */
+
+.panel-shell {
+    width: min(1440px, 90vw);
+    margin: 0 auto;
+
+    padding: 76px 0 70px;
+}
+
+.panel-hero {
+    display: grid;
+    grid-template-columns: minmax(0, 1.45fr) minmax(300px, .55fr);
+    gap: 56px;
+
+    align-items: stretch;
+
+    margin-bottom: 90px;
+}
+
+.panel-title {
+    max-width: 980px;
+
+    font-size: clamp(58px, 7vw, 110px);
+    line-height: .84;
+
+    letter-spacing: -6px;
+
+    font-weight: 900;
+    text-transform: uppercase;
+}
+
+.panel-title .outline {
+    color: transparent;
+
+    -webkit-text-stroke: 1.5px var(--ink);
+}
+
+.panel-description {
+    max-width: 650px;
+
+    margin-top: 30px;
+
+    color: var(--muted);
+
+    font-size: 16px;
+    line-height: 1.7;
+}
+
+
+/* STATUS */
+
+.panel-status {
+    min-height: 340px;
+
+    padding: 28px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    background: var(--orange);
+    color: var(--ink);
+
+    border: 1px solid var(--ink);
+
+    box-shadow: 14px 14px 0 var(--ink);
+}
+
+.panel-status-label {
+    font-family: "Courier New", monospace;
+
+    font-size: 10px;
+    font-weight: 900;
+
+    letter-spacing: 1.8px;
+    text-transform: uppercase;
+}
+
+.panel-status-code {
+    font-size: clamp(90px, 10vw, 150px);
+    line-height: .75;
+
+    font-weight: 900;
+    letter-spacing: -10px;
+}
+
+.panel-status-bottom {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+
+    font-family: "Courier New", monospace;
+
+    font-size: 10px;
+    font-weight: 900;
+
+    text-transform: uppercase;
+    letter-spacing: 1.3px;
+}
+
+.panel-role {
+    padding: 7px 10px;
+
+    border: 1px solid var(--ink);
+
+    background: var(--paper);
+}
+
+.panel-role-admin {
+    background: var(--acid);
+}
+
+
+/* HEADING */
+
+.panel-heading {
+    padding-bottom: 22px;
+
+    display: flex;
+    align-items: end;
+    justify-content: space-between;
+    gap: 40px;
+
+    border-bottom: 2px solid var(--ink);
+}
+
+.panel-heading-code {
+    display: block;
+
+    margin-bottom: 10px;
+
+    color: var(--muted);
+
+    font-family: "Courier New", monospace;
+    font-size: 10px;
+    font-weight: 700;
+
+    letter-spacing: 1.6px;
+}
+
+.panel-heading h2 {
+    font-size: clamp(32px, 4vw, 52px);
+
+    font-weight: 900;
+    letter-spacing: -2px;
+
+    text-transform: uppercase;
+}
+
+.panel-heading p {
+    max-width: 330px;
+
+    color: var(--muted);
+
+    font-size: 13px;
+    line-height: 1.6;
+
+    text-align: right;
+}
+
+
+/* CARDS */
+
+.panel-grid {
+    display: grid;
+
+    grid-template-columns: repeat(3, 1fr);
+
+    border-bottom: 2px solid var(--ink);
+}
+
+.panel-card {
+    min-height: 360px;
+
+    padding: 28px;
+
+    display: flex;
+    flex-direction: column;
+
+    border-right: 1px solid var(--ink);
+
+    background: rgba(255, 255, 255, .25);
+}
+
+.panel-card:last-child {
+    border-right: none;
+}
+
+.panel-card-top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    font-family: "Courier New", monospace;
+
+    font-size: 10px;
+    font-weight: 900;
+
+    letter-spacing: 1.4px;
+    text-transform: uppercase;
+}
+
+.panel-card h3 {
+    margin-top: 70px;
+
+    font-size: clamp(32px, 3vw, 48px);
+    line-height: .95;
+
+    font-weight: 900;
+    letter-spacing: -2px;
+
+    text-transform: uppercase;
+}
+
+.panel-card p {
+    max-width: 350px;
+
+    margin-top: 18px;
+
+    color: var(--muted);
+
+    font-size: 13px;
+    line-height: 1.65;
+}
+
+.panel-card-action,
+.panel-card-status {
+    margin-top: auto;
+}
+
+.panel-card-action {
+    padding-top: 20px;
+
+    color: var(--ink);
+
+    border-top: 1px solid var(--ink);
+
+    text-decoration: none;
+
+    font-size: 12px;
+    font-weight: 900;
+
+    text-transform: uppercase;
+    letter-spacing: .8px;
+
+    transition:
+            padding-left 160ms ease,
+            color 160ms ease;
+}
+
+.panel-card-action:hover {
+    padding-left: 8px;
+
+    color: var(--orange);
+}
+
+.panel-card-status {
+    padding-top: 20px;
+
+    border-top: 1px solid currentColor;
+
+    font-family: "Courier New", monospace;
+
+    font-size: 10px;
+    font-weight: 900;
+
+    letter-spacing: 1.3px;
+    text-transform: uppercase;
+}
+
+
+/* VARIAÇÕES */
+
+.panel-card-acid {
+    background: var(--acid);
+}
+
+.panel-card-dark {
+    color: var(--paper);
+    background: var(--ink);
+}
+
+.panel-card-dark p {
+    color: #aaa79f;
+}
+
+.panel-card-dark .panel-card-action {
+    color: var(--paper);
+    border-color: var(--paper);
+}
+
+
+/* =========================================================
+   PANEL RESPONSIVE
+   ========================================================= */
+
+@media (max-width: 950px) {
+
+    .panel-hero {
+        grid-template-columns: 1fr;
+    }
+
+    .panel-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .panel-card {
+        border-right: none;
+        border-bottom: 1px solid var(--ink);
+    }
+
+    .panel-card:last-child {
+        border-bottom: none;
+    }
+}
+
+@media (max-width: 600px) {
+
+    .panel-shell {
+        width: calc(100% - 32px);
+
+        padding-top: 46px;
+    }
+
+    .panel-title {
+        font-size: clamp(50px, 16vw, 76px);
+
+        letter-spacing: -4px;
+    }
+
+    .panel-status {
+        min-height: 280px;
+
+        box-shadow: 8px 8px 0 var(--ink);
+    }
+
+    .panel-heading {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+
+    .panel-heading p {
+        text-align: left;
+    }
+
+    .panel-card {
+        min-height: 320px;
+    }
+}
