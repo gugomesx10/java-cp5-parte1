@@ -23,7 +23,7 @@ import static org.springframework.security.config.Customizer.withDefaults;
 
 @Configuration
 @EnableWebSecurity
-@EnableMethodSecurity (prePostEnabled = true)
+@EnableMethodSecurity(prePostEnabled = true)
 public class SecurityConfig {
 
     @Value("${app.admin.username}")
@@ -38,9 +38,10 @@ public class SecurityConfig {
     }
 
     @Bean
-    SecurityFilterChain securityFilterChain(org.springframework.security.config.annotation.web.builders.HttpSecurity http,
-                                            OAuth2UsuarioService oAuth2UsuarioService)
-            throws Exception {
+    SecurityFilterChain securityFilterChain(
+            org.springframework.security.config.annotation.web.builders.HttpSecurity http,
+            OAuth2UsuarioService oAuth2UsuarioService
+    ) throws Exception {
         http
                 .csrf(withDefaults())
                 .authorizeHttpRequests(auth -> auth
@@ -58,8 +59,9 @@ public class SecurityConfig {
                         .requestMatchers(HttpMethod.GET, "/itens/{id}/editar").hasRole("ADMIN")
                         .requestMatchers(HttpMethod.PUT, "/itens/{id}/editar").hasRole("ADMIN")
                         .requestMatchers(HttpMethod.DELETE, "/itens/{id}/excluir").hasRole("ADMIN")
-                        // cp5 - parte 2
+                        // cp5 - parte 1
                         .requestMatchers(HttpMethod.GET, "/").permitAll()
+                        .requestMatchers(HttpMethod.GET, "/painel").authenticated()
                         // agora as api antiga
                         .requestMatchers(HttpMethod.GET, "/mercado", "/mercado/**").permitAll()
                         .requestMatchers(HttpMethod.POST, "/mercado").hasRole("ADMIN")
@@ -70,7 +72,7 @@ public class SecurityConfig {
                 )
                 .formLogin(form -> form
                         .loginPage("/login")
-                        .defaultSuccessUrl("/itens", true)
+                        .defaultSuccessUrl("/painel", true)
                         .permitAll()
                 )
                 .oauth2Login(oauth -> oauth
@@ -78,7 +80,7 @@ public class SecurityConfig {
                         .userInfoEndpoint(userInfo -> userInfo
                                 .userService(oAuth2UsuarioService)
                         )
-                        .defaultSuccessUrl("/itens", true)
+                        .defaultSuccessUrl("/painel", true)
                 )
                 .exceptionHandling(exception -> exception
                         .accessDeniedPage("/acesso-negado")
@@ -90,21 +92,26 @@ public class SecurityConfig {
                         .contentSecurityPolicy(csp -> csp
                                 .policyDirectives(
                                         "default-src 'self'; " +
-                                        "script-src 'self'; " +
-                                        "style-src 'self'; " +
-                                        "img-src 'self'; " +
-                                        "object-src 'none'; " +
-                                        "base-uri 'self'; " +
-                                        "frame-ancestors 'none'"
+                                                "script-src 'self'; " +
+                                                "style-src 'self'; " +
+                                                "img-src 'self'; " +
+                                                "object-src 'none'; " +
+                                                "base-uri 'self'; " +
+                                                "frame-ancestors 'none'"
                                 )
                         )
                         .referrerPolicy(referrer -> referrer
-                                .policy(ReferrerPolicyHeaderWriter.ReferrerPolicy.SAME_ORIGIN)
-                        ).permissionsPolicyHeader(permissions -> permissions
+                                .policy(
+                                        ReferrerPolicyHeaderWriter
+                                                .ReferrerPolicy
+                                                .SAME_ORIGIN
+                                )
+                        )
+                        .permissionsPolicyHeader(permissions -> permissions
                                 .policy(
                                         "camera=(), " +
-                                        "microphone=(), " +
-                                        "geolocation=()"
+                                                "microphone=(), " +
+                                                "geolocation=()"
                                 )
                         )
                 );
@@ -113,8 +120,11 @@ public class SecurityConfig {
     }
 
     @Bean
-    public UserDetailsService userDetailsService(PasswordEncoder passwordEncoder,
-                                                 UsuarioRepository usuarioRepository) {
+    public UserDetailsService userDetailsService(
+            PasswordEncoder passwordEncoder,
+            UsuarioRepository usuarioRepository
+    ) {
+
         UserDetails user = User.builder()
                 .username(adminUsername)
                 .password(passwordEncoder.encode(adminPassword))
@@ -122,15 +132,23 @@ public class SecurityConfig {
                 .build();
 
         return username -> {
+
             if (username.equals(adminUsername)) {
                 return user;
+
             } else {
-                return usuarioRepository.findByUsernameAndProvider(username, AuthProvider.LOCAL)
+
+                return usuarioRepository
+                        .findByUsernameAndProvider(
+                                username,
+                                AuthProvider.LOCAL
+                        )
                         .map(usuario -> User.builder()
                                 .username(usuario.getUsername())
                                 .password(usuario.getSenha())
                                 .roles(usuario.getRole())
-                                .build())
+                                .build()
+                        )
                         .orElseThrow(() ->
                                 new UsernameNotFoundException(
                                         "Usuário não encontrado: " + username

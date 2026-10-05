@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="pt-br"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+            name="viewport"
+            content="width=device-width, initial-scale=1.0">
+
+    <title>Painel | Market Express</title>
+
+    <link
+            rel="stylesheet"
+            href="/css/style.css"
+            th:href="@{/css/style.css}">
+
+</head>
+
+<body>
+
+<header class="topbar">
+
+    <a
+            class="brand"
+            th:href="@{/}">
+
+        <span>
+            MARKET<span class="brand-slash">/</span>
+        </span>
+
+        <span>
+            EXPRESS
+        </span>
+
+    </a>
+
+
+    <div class="topbar-center">
+        Restricted workspace / CP5
+    </div>
+
+
+    <div class="topbar-actions">
+
+        <form
+                th:action="@{/logout}"
+                method="post">
+
+            <button
+                    class="topbar-action"
+                    type="submit">
+
+                Sair ↗
+
+            </button>
+
+        </form>
+
+    </div>
+
+</header>
+
+
+<main class="panel-shell">
+
+
+    <section class="panel-hero">
+
+        <div>
+
+            <div class="hero-kicker">
+                Área autenticada
+            </div>
+
+
+            <h1 class="panel-title">
+
+                Bem-vindo<br>
+
+                <span class="outline">
+                    ao painel.
+                </span>
+
+            </h1>
+
+
+            <p class="panel-description">
+
+                Acesse as funcionalidades disponíveis para o seu
+                perfil dentro do Market Express.
+
+            </p>
+
+        </div>
+
+
+        <aside class="panel-status">
+
+            <span class="panel-status-label">
+                Sessão
+            </span>
+
+
+            <div class="panel-status-code">
+                200
+            </div>
+
+
+            <div class="panel-status-bottom">
+
+                <span>
+                    Access granted
+                </span>
+
+
+                <span
+                        class="panel-role panel-role-admin"
+                        sec:authorize="hasRole('ADMIN')">
+
+                    ADMIN
+
+                </span>
+
+
+                <span
+                        class="panel-role"
+                        sec:authorize="hasRole('USER')">
+
+                    USER
+
+                </span>
+
+            </div>
+
+        </aside>
+
+    </section>
+
+
+
+    <section class="panel-heading">
+
+        <div>
+
+            <span class="panel-heading-code">
+                01 / WORKSPACE
+            </span>
+
+            <h2>
+                Acesso rápido
+            </h2>
+
+        </div>
+
+        <p>
+            Recursos disponíveis de acordo com
+            as permissões da sua conta.
+        </p>
+
+    </section>
+
+
+
+    <section class="panel-grid">
+
+
+        <!-- DISPONÍVEL PARA USER E ADMIN -->
+
+        <article class="panel-card">
+
+            <div class="panel-card-top">
+
+                <span>
+                    01
+                </span>
+
+                <span>
+                    CATÁLOGO
+                </span>
+
+            </div>
+
+
+            <h3>
+                Produtos
+            </h3>
+
+
+            <p>
+
+                Consulte todos os produtos disponíveis
+                no catálogo do Market Express.
+
+            </p>
+
+
+            <a
+                    class="panel-card-action"
+                    th:href="@{/itens}">
+
+                Abrir catálogo →
+
+            </a>
+
+        </article>
+
+
+
+        <!-- SOMENTE ADMIN -->
+
+        <article
+                class="panel-card panel-card-acid"
+                sec:authorize="hasRole('ADMIN')">
+
+            <div class="panel-card-top">
+
+                <span>
+                    02
+                </span>
+
+                <span>
+                    ADMIN
+                </span>
+
+            </div>
+
+
+            <h3>
+                Novo produto
+            </h3>
+
+
+            <p>
+
+                Cadastre novos itens e gerencie
+                o estoque do Market Express.
+
+            </p>
+
+
+            <a
+                    class="panel-card-action"
+                    th:href="@{/itens/novo}">
+
+                Cadastrar produto →
+
+            </a>
+
+        </article>
+
+
+
+        <!-- USER -->
+
+        <article
+                class="panel-card"
+                sec:authorize="hasRole('USER')">
+
+            <div class="panel-card-top">
+
+                <span>
+                    02
+                </span>
+
+                <span>
+                    USER
+                </span>
+
+            </div>
+
+
+            <h3>
+                Seu acesso
+            </h3>
+
+
+            <p>
+
+                Seu perfil possui acesso de visualização
+                ao catálogo de produtos.
+
+            </p>
+
+
+            <span class="panel-card-status">
+                Somente visualização
+            </span>
+
+        </article>
+
+
+
+        <!-- SEGURANÇA -->
+
+        <article class="panel-card panel-card-dark">
+
+            <div class="panel-card-top">
+
+                <span>
+                    03
+                </span>
+
+                <span>
+                    SECURITY
+                </span>
+
+            </div>
+
+
+            <h3>
+                Sessão protegida
+            </h3>
+
+
+            <p>
+
+                Esta página é acessível apenas após
+                autenticação no sistema.
+
+            </p>
+
+
+            <span class="panel-card-status">
+                Spring Security / Active
+            </span>
+
+        </article>
+
+    </section>
+
+
+
+    <footer class="footer">
+
+        <span class="footer-mark">
+            MARKET/EXPRESS
+        </span>
+
+        <span>
+            Authenticated workspace
+        </span>
+
+        <span>
+            Spring Security
+        </span>
+
+    </footer>
+
+
+</main>
+
+</body>
+
+</html>
