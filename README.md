@@ -559,6 +559,10 @@ GITHUB_CLIENT_SECRET
 
 As imagens disponíveis no repositório documentam as principais funcionalidades do sistema.
 
+### Painel 
+
+![Painel](src/main/img/PAINEL.png)
+
 ### Catálogo
 
 ![Catálogo](src/main/img/CATALOGO.png)
