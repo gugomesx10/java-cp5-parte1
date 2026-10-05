@@ -1956,3 +1956,119 @@ button {
         padding: 30px 22px;
     }
 }
+
+/* =========================================================
+HOME / LANDING PAGE
+========================================================= */
+
+    .home-hero {
+        min-height: 620px;
+        align-items: center;
+    }
+
+    .home-actions {
+        margin-top: 36px;
+
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        flex-wrap: wrap;
+    }
+
+    .home-card {
+        min-height: 360px;
+    }
+
+    .home-card-number {
+        margin-top: 40px;
+
+        font-size: clamp(72px, 8vw, 120px);
+        line-height: 0.78;
+
+        font-weight: 900;
+        letter-spacing: -8px;
+
+        text-transform: uppercase;
+    }
+
+    .home-features {
+        margin-top: 30px;
+
+        border-top: 2px solid var(--ink);
+        border-bottom: 2px solid var(--ink);
+    }
+
+    .home-feature {
+        min-height: 170px;
+
+        padding: 28px 0;
+
+        display: grid;
+        grid-template-columns: 120px 1fr;
+        gap: 40px;
+
+        align-items: center;
+
+        border-bottom: 1px solid var(--line);
+    }
+
+    .home-feature:last-child {
+        border-bottom: none;
+    }
+
+    .home-feature-number {
+        color: transparent;
+
+        -webkit-text-stroke: 1.5px var(--ink);
+
+        font-size: 64px;
+        line-height: 1;
+
+        font-weight: 900;
+        letter-spacing: -5px;
+    }
+
+    .home-feature h2 {
+        font-size: 30px;
+        font-weight: 900;
+
+        text-transform: uppercase;
+        letter-spacing: -1px;
+    }
+
+    .home-feature p {
+        max-width: 620px;
+
+        margin-top: 8px;
+
+        color: var(--muted);
+
+        font-size: 14px;
+        line-height: 1.7;
+    }
+
+    @media (max-width: 600px) {
+
+        .home-hero {
+            min-height: auto;
+        }
+
+        .home-actions {
+            align-items: stretch;
+            flex-direction: column;
+        }
+
+        .home-actions .primary-action,
+        .home-actions .secondary-action {
+            width: 100%;
+        }
+
+        .home-feature {
+            grid-template-columns: 70px 1fr;
+            gap: 18px;
+        }
+
+        .home-feature-number {
+            font-size: 46px;
+        }
+    }

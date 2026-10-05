@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="pt-br" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta
+            name="viewport"
+            content="width=device-width, initial-scale=1.0">
+
+    <title>Market Express</title>
+
+    <link
+            rel="stylesheet"
+            href="/css/style.css"
+            th:href="@{/css/style.css}">
+</head>
+
+<body>
+
+<header class="topbar">
+
+    <a class="brand" th:href="@{/}">
+        <span>
+            MARKET<span class="brand-slash">/</span>
+        </span>
+
+        <span>
+            EXPRESS
+        </span>
+    </a>
+
+    <div class="topbar-center">
+        Inventory management / 2026
+    </div>
+
+    <div class="topbar-actions">
+
+        <a
+                class="topbar-action"
+                th:href="@{/login}">
+            Entrar →
+        </a>
+
+    </div>
+
+</header>
+
+
+<main class="shell">
+
+    <section class="hero home-hero">
+
+        <div>
+
+            <div class="hero-kicker">
+                Market management system
+            </div>
+
+            <h1 class="hero-title">
+
+                Seu mercado.<br>
+
+                <span class="outline">
+                    Sob controle.
+                </span>
+
+            </h1>
+
+            <p class="hero-description">
+
+                Uma plataforma para consulta e gerenciamento
+                do catálogo de produtos do Market Express,
+                com controle de acesso e persistência de dados.
+
+            </p>
+
+            <div class="home-actions">
+
+                <a
+                        class="primary-action"
+                        th:href="@{/itens}">
+                    Explorar catálogo
+                </a>
+
+                <a
+                        class="secondary-action"
+                        th:href="@{/cadastro}">
+                    Criar conta
+                </a>
+
+            </div>
+
+        </div>
+
+
+        <aside class="hero-side home-card">
+
+            <div>
+
+                <span class="hero-side-label">
+                    Sistema
+                </span>
+
+                <div class="home-card-number">
+                    CP5
+                </div>
+
+                <div class="hero-count-caption">
+                    Spring Security / MVC
+                </div>
+
+            </div>
+
+            <a
+                    class="new-product"
+                    th:href="@{/login}">
+                Acessar sistema
+            </a>
+
+        </aside>
+
+    </section>
+
+
+    <section class="home-features">
+
+        <article class="home-feature">
+
+            <span class="home-feature-number">
+                01
+            </span>
+
+            <div>
+
+                <h2>
+                    Catálogo
+                </h2>
+
+                <p>
+                    Consulte os produtos cadastrados
+                    no Market Express.
+                </p>
+
+            </div>
+
+        </article>
+
+
+        <article class="home-feature">
+
+            <span class="home-feature-number">
+                02
+            </span>
+
+            <div>
+
+                <h2>
+                    Segurança
+                </h2>
+
+                <p>
+                    Autenticação, autorização por perfil
+                    e proteção das operações administrativas.
+                </p>
+
+            </div>
+
+        </article>
+
+
+        <article class="home-feature">
+
+            <span class="home-feature-number">
+                03
+            </span>
+
+            <div>
+
+                <h2>
+                    Gestão
+                </h2>
+
+                <p>
+                    CRUD completo para administração
+                    dos produtos do mercado.
+                </p>
+
+            </div>
+
+        </article>
+
+    </section>
+
+
+    <footer class="footer">
+
+        <span class="footer-mark">
+            MARKET/EXPRESS
+        </span>
+
+        <span>
+            Spring MVC + Security
+        </span>
+
+        <span>
+            FIAP / 2026
+        </span>
+
+    </footer>
+
+</main>
+
+</body>
+</html>
