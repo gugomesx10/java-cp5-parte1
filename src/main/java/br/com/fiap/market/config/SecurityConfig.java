@@ -58,6 +58,8 @@ public class SecurityConfig {
                         .requestMatchers(HttpMethod.GET, "/itens/{id}/editar").hasRole("ADMIN")
                         .requestMatchers(HttpMethod.PUT, "/itens/{id}/editar").hasRole("ADMIN")
                         .requestMatchers(HttpMethod.DELETE, "/itens/{id}/excluir").hasRole("ADMIN")
+                        // cp5 - parte 2
+                        .requestMatchers(HttpMethod.GET, "/").permitAll()
                         // agora as api antiga
                         .requestMatchers(HttpMethod.GET, "/mercado", "/mercado/**").permitAll()
                         .requestMatchers(HttpMethod.POST, "/mercado").hasRole("ADMIN")
