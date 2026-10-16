@@ -43,7 +43,9 @@ public class SecurityConfig {
             OAuth2UsuarioService oAuth2UsuarioService
     ) throws Exception {
         http
-                .csrf(withDefaults())
+                .csrf(csrf -> csrf
+                        .ignoringRequestMatchers("/compras/**")
+                )
                 .authorizeHttpRequests(auth -> auth
                         .requestMatchers("/login").permitAll()
                         .requestMatchers("/css/**").permitAll()
@@ -68,6 +70,9 @@ public class SecurityConfig {
                         .requestMatchers(HttpMethod.PUT, "/mercado/{id}").hasRole("ADMIN")
                         .requestMatchers(HttpMethod.PATCH, "/mercado/{id}").hasRole("ADMIN")
                         .requestMatchers(HttpMethod.DELETE, "/mercado/{id}").hasRole("ADMIN")
+                        // cp5 - parte 2
+                        .requestMatchers(HttpMethod.POST, "/compras").hasRole("USER")
+                        .requestMatchers(HttpMethod.GET, "/compras").hasRole("ADMIN")
                         .anyRequest().authenticated()
                 )
                 .formLogin(form -> form
@@ -82,6 +87,7 @@ public class SecurityConfig {
                         )
                         .defaultSuccessUrl("/painel", true)
                 )
+                .httpBasic(withDefaults())
                 .exceptionHandling(exception -> exception
                         .accessDeniedPage("/acesso-negado")
                 )
