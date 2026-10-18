@@ -1,0 +1,134 @@
+/* MARKET EXPRESS / ADMIN ANALYTICS */
+
+.admin-chart {
+    border: 1px solid #111;
+    padding: 32px;
+    margin-bottom: 70px;
+}
+
+.admin-chart-header {
+    display: flex;
+    justify-content: space-between;
+    gap: 16px;
+    padding-bottom: 24px;
+    margin-bottom: 28px;
+    border-bottom: 1px solid #111;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 1px;
+}
+
+.admin-chart-row {
+    margin-bottom: 28px;
+}
+
+.admin-chart-label {
+    display: flex;
+    justify-content: space-between;
+    font-size: 14px;
+    margin-bottom: 10px;
+}
+
+.admin-progress {
+    display: block;
+    width: 100%;
+    height: 22px;
+    border: 1px solid #111;
+    border-radius: 0;
+    appearance: none;
+    -webkit-appearance: none;
+    background: transparent;
+}
+
+.admin-progress::-webkit-progress-bar {
+    background: #e1ded6;
+}
+
+.admin-progress.approved::-webkit-progress-value {
+    background: #c6ff35;
+}
+
+.admin-progress.rejected::-webkit-progress-value {
+    background: #ff593b;
+}
+
+.admin-progress.pending::-webkit-progress-value {
+    background: #888;
+}
+
+.admin-progress.approved::-moz-progress-bar {
+    background: #c6ff35;
+}
+
+.admin-progress.rejected::-moz-progress-bar {
+    background: #ff593b;
+}
+
+.admin-progress.pending::-moz-progress-bar {
+    background: #888;
+}
+
+.admin-table-wrapper {
+    overflow-x: auto;
+    border: 1px solid #111;
+    margin-bottom: 70px;
+}
+
+.admin-table {
+    width: 100%;
+    border-collapse: collapse;
+    min-width: 720px;
+}
+
+.admin-table th,
+.admin-table td {
+    padding: 20px 16px;
+    text-align: left;
+    border-bottom: 1px solid #222;
+    font-size: 12px;
+}
+
+.admin-table th {
+    background: #111;
+    color: #fff;
+    font-size: 10px;
+    letter-spacing: 1px;
+}
+
+.admin-table tbody tr:last-child td {
+    border-bottom: none;
+}
+
+.admin-status {
+    display: inline-block;
+    padding: 7px 10px;
+    border: 1px solid #111;
+    font-size: 10px;
+    font-weight: 800;
+}
+
+.status-aprovada {
+    background: #c6ff35;
+    color: #111;
+}
+
+.status-recusada {
+    background: #ff593b;
+    color: #111;
+}
+
+.status-pendente {
+    background: #ddd;
+    color: #111;
+}
+
+@media (max-width: 700px) {
+    .admin-chart {
+        padding: 20px;
+    }
+
+    .admin-table th,
+    .admin-table td {
+        padding: 14px;
+    }
+}

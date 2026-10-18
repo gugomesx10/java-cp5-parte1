@@ -64,6 +64,7 @@ public class SecurityConfig {
                         // cp5 - parte 1
                         .requestMatchers(HttpMethod.GET, "/").permitAll()
                         .requestMatchers(HttpMethod.GET, "/painel").authenticated()
+                        .requestMatchers(HttpMethod.GET, "/admin/dashboard").hasRole("ADMIN")
                         // agora as api antiga
                         .requestMatchers(HttpMethod.GET, "/mercado", "/mercado/**").permitAll()
                         .requestMatchers(HttpMethod.POST, "/mercado").hasRole("ADMIN")

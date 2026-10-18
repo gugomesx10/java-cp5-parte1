@@ -330,6 +330,34 @@
 
         </article>
 
+        <article
+                class="panel-card"
+                sec:authorize="hasRole('ADMIN')">
+
+            <div class="panel-card-top">
+                <span>04</span>
+                <span>ANALYTICS</span>
+            </div>
+
+            <h3>
+                Dashboard gerencial
+            </h3>
+
+            <p>
+                Acompanhe vendas, pagamentos,
+                desempenho e indicadores do mercado.
+            </p>
+
+            <a
+                    class="panel-card-action"
+                    th:href="@{/admin/dashboard}">
+
+                Visualizar dashboard →
+
+            </a>
+
+        </article>
+
     </section>
 
 
