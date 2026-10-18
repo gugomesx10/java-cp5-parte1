@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="pt-br"
+      xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Dashboard Gerencial | Market Express</title>
+
+    <link rel="stylesheet"
+          th:href="@{/css/style.css}">
+
+    <link rel="stylesheet"
+          th:href="@{/css/admin-dashboard.css}">
+</head>
+
+<body>
+
+<header class="topbar">
+
+    <a class="brand" th:href="@{/}">
+        <span>MARKET<span class="brand-slash">/</span></span>
+        <span>EXPRESS</span>
+    </a>
+
+    <div class="topbar-center">
+        Management / Analytics
+    </div>
+
+    <div class="topbar-actions">
+        <a class="topbar-action" th:href="@{/painel}">
+            Voltar ao painel ↗
+        </a>
+    </div>
+
+</header>
+
+<main class="panel-shell">
+
+    <section class="panel-hero">
+
+        <div>
+            <div class="hero-kicker">
+                Área administrativa / CP5
+            </div>
+
+            <h1 class="panel-title">
+                Dashboard<br>
+                <span class="outline">gerencial.</span>
+            </h1>
+
+            <p class="panel-description">
+                Indicadores de compras, pagamentos e
+                produtos do Market Express.
+            </p>
+        </div>
+
+        <aside class="panel-status">
+            <span class="panel-status-label">
+                Ambiente
+            </span>
+
+            <div class="panel-status-code">
+                200
+            </div>
+
+            <div class="panel-status-bottom">
+                <span>Analytics / Active</span>
+                <span class="panel-role panel-role-admin">
+                    ADMIN
+                </span>
+            </div>
+        </aside>
+
+    </section>
+
+    <section class="panel-heading">
+        <div>
+            <span class="panel-heading-code">
+                01 / OVERVIEW
+            </span>
+
+            <h2>Visão geral</h2>
+        </div>
+
+        <p>
+            Dados atualizados a partir das compras
+            registradas no Oracle.
+        </p>
+    </section>
+
+    <section class="panel-grid">
+
+        <article class="panel-card panel-card-acid">
+
+            <div class="panel-card-top">
+                <span>01</span>
+                <span>RECEITA</span>
+            </div>
+
+            <h3>Valor aprovado</h3>
+
+            <p th:text="${'R$ ' + #numbers.formatDecimal(resumo.valorTotalAprovado, 1, 'POINT', 2, 'COMMA')}">
+                R$ 0,00
+            </p>
+
+            <span class="panel-card-status">
+                Pagamentos aprovados
+            </span>
+        </article>
+
+        <article class="panel-card">
+
+            <div class="panel-card-top">
+                <span>02</span>
+                <span>COMPRAS</span>
+            </div>
+
+            <h3>Total de compras</h3>
+
+            <p th:text="${resumo.totalCompras}">0</p>
+        </article>
+
+        <article class="panel-card">
+
+            <div class="panel-card-top">
+                <span>03</span>
+                <span>APROVADAS</span>
+            </div>
+
+            <h3>Pagamentos aprovados</h3>
+
+            <p th:text="${resumo.comprasAprovadas}">0</p>
+        </article>
+
+        <article class="panel-card panel-card-dark">
+
+            <div class="panel-card-top">
+                <span>04</span>
+                <span>RECUSADAS</span>
+            </div>
+
+            <h3>Pagamentos recusados</h3>
+
+            <p th:text="${resumo.comprasRecusadas}">0</p>
+        </article>
+
+        <article class="panel-card">
+
+            <div class="panel-card-top">
+                <span>05</span>
+                <span>PENDENTES</span>
+            </div>
+
+            <h3>Aguardando pagamento</h3>
+
+            <p th:text="${resumo.comprasPendentes}">0</p>
+        </article>
+
+        <article class="panel-card">
+
+            <div class="panel-card-top">
+                <span>06</span>
+                <span>CATÁLOGO</span>
+            </div>
+
+            <h3>Produtos cadastrados</h3>
+
+            <p th:text="${resumo.totalProdutos}">0</p>
+        </article>
+
+    </section>
+
+    <section class="panel-heading">
+        <div>
+        <span class="panel-heading-code">
+            02 / ANALYTICS
+        </span>
+
+            <h2>Análise de pagamentos</h2>
+        </div>
+
+        <p>
+            Distribuição dos pagamentos registrados no Oracle.
+        </p>
+    </section>
+
+    <section class="admin-chart">
+
+        <div class="admin-chart-header">
+            <span>PAYMENT / STATUS</span>
+            <span th:text="${resumo.totalCompras} + ' compras'">
+            0 compras
+        </span>
+        </div>
+
+        <div class="admin-chart-row">
+            <div class="admin-chart-label">
+                <span>Aprovadas</span>
+                <strong th:text="${resumo.comprasAprovadas}">0</strong>
+            </div>
+
+            <progress class="admin-progress approved"
+                      th:value="${resumo.comprasAprovadas}"
+                      th:max="${resumo.totalCompras > 0 ? resumo.totalCompras : 1}">
+            </progress>
+        </div>
+
+        <div class="admin-chart-row">
+            <div class="admin-chart-label">
+                <span>Recusadas</span>
+                <strong th:text="${resumo.comprasRecusadas}">0</strong>
+            </div>
+
+            <progress class="admin-progress rejected"
+                      th:value="${resumo.comprasRecusadas}"
+                      th:max="${resumo.totalCompras > 0 ? resumo.totalCompras : 1}">
+            </progress>
+        </div>
+
+        <div class="admin-chart-row">
+            <div class="admin-chart-label">
+                <span>Pendentes</span>
+                <strong th:text="${resumo.comprasPendentes}">0</strong>
+            </div>
+
+            <progress class="admin-progress pending"
+                      th:value="${resumo.comprasPendentes}"
+                      th:max="${resumo.totalCompras > 0 ? resumo.totalCompras : 1}">
+            </progress>
+        </div>
+
+    </section>
+
+    <section class="panel-heading">
+        <div>
+        <span class="panel-heading-code">
+            03 / TRANSACTIONS
+        </span>
+
+            <h2>Compras recentes</h2>
+        </div>
+
+        <p>
+            Últimas 10 compras registradas no sistema.
+        </p>
+    </section>
+
+    <section class="admin-table-wrapper">
+
+        <table class="admin-table">
+
+            <thead>
+            <tr>
+                <th>COMPRA</th>
+                <th>CLIENTE</th>
+                <th>VALOR</th>
+                <th>STATUS</th>
+                <th>DATA</th>
+            </tr>
+            </thead>
+
+            <tbody>
+
+            <tr th:each="compra : ${compras}">
+
+                <td th:text="'#' + ${compra.id}">#1</td>
+
+                <td th:text="${compra.emailCliente}">
+                    cliente@email.com
+                </td>
+
+                <td th:text="${'R$ ' + #numbers.formatDecimal(compra.valorTotal, 1, 'POINT', 2, 'COMMA')}">
+                    R$ 0,00
+                </td>
+
+                <td>
+                <span class="admin-status"
+                      th:classappend="${'status-' + #strings.toLowerCase(compra.status.name())}"
+                      th:text="${compra.status}">
+                    PENDENTE
+                </span>
+                </td>
+
+                <td th:text="${#temporals.format(compra.criadaEm, 'dd/MM/yyyy HH:mm')}">
+                    18/10/2026
+                </td>
+
+            </tr>
+
+            <tr th:if="${#lists.isEmpty(compras)}">
+                <td colspan="5">
+                    Nenhuma compra registrada.
+                </td>
+            </tr>
+
+            </tbody>
+        </table>
+
+    </section>
+
+    <footer class="footer">
+        <span class="footer-mark">
+            MARKET/EXPRESS
+        </span>
+
+        <span>Management workspace</span>
+
+        <span>Oracle / Spring Boot</span>
+    </footer>
+
+</main>
+
+</body>
+</html>
