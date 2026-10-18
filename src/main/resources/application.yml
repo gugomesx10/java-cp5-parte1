@@ -40,7 +40,16 @@ integracao:
   banco-tranquilo:
     base-url: ${BANCO_TRANQUILO_URL:http://localhost:8083}
 
+  brevo:
+    api-key: ${BREVO_API_KEY}
+    remetente: ${BREVO_SENDER_EMAIL}
+
 app:
   admin:
     username: ${ADMIN_USERNAME:admin}
     password: ${ADMIN_PASSWORD}
+
+  email-datasource:
+    url: ${EMAIL_DB_URL}
+    username: ${EMAIL_DB_USERNAME}
+    password: ${EMAIL_DB_PASSWORD}
